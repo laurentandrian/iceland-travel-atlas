@@ -40,7 +40,7 @@ All checks below were read-only. Nothing was edited, published or deleted in Wor
 - Interactive map option for Iceland (and later other trips): we'd keep a small list of coordinates per stage inside the new site, so WordPress stays unchanged.
 - Older Elementor/Kadence layout styling would be cleaned up so articles look consistent in the new design.
 
-## Open questions before building
-- Should the older pages (En Partant, Entretien, Divers, Arrivee) appear in the new site?
-- Do you want an interactive Iceland map, and later for other trips?
-- Keep French as the only language?
+## Decisions
+- Older pages (En Partant, Entretien, Divers, Arrivee) will not appear in the new site.
+- Interactive map: yes, for Iceland first, then the other trips.
+- Language: French only.
