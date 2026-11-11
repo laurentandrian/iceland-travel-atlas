@@ -44,7 +44,7 @@ function Voyages() {
           {archive.map((t) => (
             <Link key={t.slug} to="/voyages/$slug" params={{ slug: t.slug }} className="group block">
               <div className="photo-zoom overflow-hidden">
-                <Photo src={t.cover} alt={`${t.name} ${t.year}`} className="aspect-[4/5] w-full"
+                <Photo src={t.cover} srcSet={t.coverSrcset} sizes="(min-width: 768px) 33vw, 100vw" alt={`${t.name} ${t.year}`} className="aspect-[4/5] w-full"
                   fallback={<div className="flex aspect-[4/5] w-full items-center justify-center bg-secondary font-serif text-6xl text-accent">{t.year}</div>} />
               </div>
               <h3 className="mt-4 text-2xl group-hover:text-accent">{t.name}</h3>
@@ -61,7 +61,7 @@ function Voyages() {
 function TripTile({ t, big = false }: { t: { slug: string; name: string; year: number; cover: string | null; start: string | null; end: string | null }; big?: boolean }) {
   return (
     <Link to="/voyages/$slug" params={{ slug: t.slug }} className="photo-zoom group relative block overflow-hidden">
-      <Photo src={t.cover} alt={`${t.name} ${t.year}`} className={`w-full ${big ? "aspect-[4/5] md:h-full md:aspect-auto" : "aspect-[16/9]"}`}
+      <Photo src={t.cover} srcSet={t.coverSrcset} sizes={big ? "(min-width: 768px) 60vw, 100vw" : "(min-width: 768px) 40vw, 100vw"} alt={`${t.name} ${t.year}`} className={`w-full ${big ? "aspect-[4/5] md:h-full md:aspect-auto" : "aspect-[16/9]"}`}
         fallback={<div className="aspect-[16/9] w-full bg-foreground" />} />
       <div className="absolute inset-0 bg-gradient-to-t from-overlay to-transparent" />
       <div className="absolute bottom-0 p-6 text-on-photo md:p-8">

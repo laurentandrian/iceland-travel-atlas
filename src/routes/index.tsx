@@ -29,11 +29,11 @@ function Home() {
     <div>
       <section className="relative h-[92vh] min-h-[560px] overflow-hidden">
         <Header overPhoto />
-        <Photo src={iceland.cover} alt="Islande 2026" className="absolute inset-0 h-full w-full" fallback={<div className="absolute inset-0 bg-foreground" />} />
+        <Photo src={iceland.cover} srcSet={iceland.coverSrcset} sizes="max(100vw, 140vh)" priority alt="Islande 2026" className="absolute inset-0 h-full w-full" fallback={<div className="absolute inset-0 bg-foreground" />} />
         <div className="absolute inset-0 bg-gradient-to-t from-overlay via-transparent to-transparent" />
         <div className="rise absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-6 pb-16 text-on-photo md:px-10 md:pb-24">
           <p className="eyebrow">Carnet de voyages</p>
-          <h1 className="mt-4 max-w-3xl text-5xl leading-[1.05] md:text-7xl lg:text-8xl">Partir, regarder, raconter.</h1>
+          <h1 className="mt-4 max-w-3xl text-[2.6rem] sm:text-5xl leading-[1.05] md:text-7xl lg:text-8xl">Partir, regarder, raconter.</h1>
         </div>
       </section>
 
@@ -47,7 +47,7 @@ function Home() {
       <section className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="grid items-center gap-10 md:grid-cols-12">
           <Link to="/voyages/$slug" params={{ slug: iceland.slug }} className="photo-zoom block overflow-hidden md:col-span-7">
-            <Photo src={iceland.cover} alt="Islande 2026" className="aspect-[4/5] w-full md:aspect-[4/3]" />
+            <Photo src={iceland.cover} srcSet={iceland.coverSrcset} sizes="(min-width: 768px) 58vw, 100vw" alt="Islande 2026" className="aspect-[4/5] w-full md:aspect-[4/3]" />
           </Link>
           <div className="md:col-span-5 md:pl-6">
             <p className="eyebrow text-accent">À la une · {fmtRange(iceland.start, iceland.end)}</p>
@@ -68,7 +68,7 @@ function Home() {
         <div className="grid gap-10 md:grid-cols-2">
           {selected.map((t) => (
             <Link key={t.slug} to="/voyages/$slug" params={{ slug: t.slug }} className="group block">
-              <div className="photo-zoom overflow-hidden"><Photo src={t.cover} alt={`${t.name} ${t.year}`} className="aspect-[3/2] w-full" /></div>
+              <div className="photo-zoom overflow-hidden"><Photo src={t.cover} srcSet={t.coverSrcset} sizes="(min-width: 768px) 50vw, 100vw" alt={`${t.name} ${t.year}`} className="aspect-[3/2] w-full" /></div>
               <p className="eyebrow mt-5 text-muted-foreground">{t.year} · {t.count} récits</p>
               <h3 className="mt-2 text-3xl group-hover:text-accent">{t.name}</h3>
             </Link>
@@ -83,7 +83,7 @@ function Home() {
           <ul className="mt-12 divide-y divide-border border-y border-border">
             {archive.map((t) => (
               <li key={t.slug}>
-                <Link to="/voyages/$slug" params={{ slug: t.slug }} className="group flex items-baseline justify-between gap-6 py-6">
+                <Link to="/voyages/$slug" params={{ slug: t.slug }} className="group flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-6">
                   <span className="font-serif text-3xl group-hover:text-accent">{t.name}</span>
                   <span className="eyebrow text-muted-foreground">{t.year} · {t.count} récits</span>
                 </Link>

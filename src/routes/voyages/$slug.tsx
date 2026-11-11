@@ -44,11 +44,11 @@ function Trip() {
     <div>
       <section className="relative h-[80vh] min-h-[480px] overflow-hidden">
         <Header overPhoto />
-        <Photo src={trip.cover} alt={trip.name} className="absolute inset-0 h-full w-full" fallback={<div className="absolute inset-0 bg-foreground" />} />
+        <Photo src={trip.cover} srcSet={trip.coverSrcset} sizes="max(100vw, 120vh)" priority alt={trip.name} className="absolute inset-0 h-full w-full" fallback={<div className="absolute inset-0 bg-foreground" />} />
         <div className="absolute inset-0 bg-gradient-to-t from-overlay via-transparent to-transparent" />
         <div className="rise absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-6 pb-14 text-on-photo md:px-10">
           <p className="eyebrow">{fmtRange(trip.start, trip.end)} · {trip.count} récits</p>
-          <h1 className="mt-3 text-6xl md:text-8xl">{trip.name} <span className="italic">{trip.year}</span></h1>
+          <h1 className="mt-3 text-5xl sm:text-6xl md:text-8xl">{trip.name} <span className="italic">{trip.year}</span></h1>
         </div>
       </section>
 
@@ -73,7 +73,7 @@ function Trip() {
                 <li key={p.slug}>
                   <Link to="/article/$slug" params={{ slug: p.slug }} className="group flex gap-4">
                     <span className="eyebrow w-6 shrink-0 pt-1 text-accent">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="group-hover:text-accent">{p.title}</span>
+                    <span className="py-1 group-hover:text-accent">{p.title}</span>
                   </Link>
                 </li>
               ))}
@@ -91,13 +91,13 @@ function Trip() {
       </section>
 
       <section className="mx-auto mt-28 max-w-7xl px-6 md:px-10">
-        <h2 className="mb-12 text-4xl">Le carnet, jour après jour</h2>
+        <h2 className="mb-12 text-3xl sm:text-4xl">Le carnet, jour après jour</h2>
         <div className="space-y-20">
           {posts.map((p, i) => (
             <Link key={p.slug} to="/article/$slug" params={{ slug: p.slug }} className={`group grid items-center gap-8 md:grid-cols-12 ${p.image ? "" : "md:pl-[calc(100%/12*5)]"}`}>
               {p.image && (
                 <div className={`photo-zoom overflow-hidden md:col-span-7 ${i % 2 ? "md:order-2 md:col-start-6" : ""}`}>
-                  <Photo src={p.image} alt={p.title} className="aspect-[3/2] w-full" />
+                  <Photo src={p.image} srcSet={p.srcset} sizes="(min-width: 768px) 58vw, 100vw" alt={p.title} className="aspect-[3/2] w-full" />
                 </div>
               )}
               <div className={p.image ? `md:col-span-5 ${i % 2 ? "md:order-1 md:col-start-1 md:row-start-1" : ""}` : "md:col-span-12"}>

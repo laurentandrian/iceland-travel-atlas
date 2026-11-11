@@ -155,12 +155,23 @@
 .prose-journal a { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
 .prose-journal ul, .prose-journal ol { max-width: 40rem; margin: 0 auto 1.4em; padding-left: 1.2rem; list-style: disc; }
 .prose-journal figure, .prose-journal > img, .prose-journal p > img { margin: 3rem auto; max-width: 64rem; }
-.prose-journal img { width: 100%; height: auto; display: block; }
+.prose-journal img { width: auto; max-width: 100%; height: auto; display: block; margin-inline: auto; }
+.prose-journal figure { padding: 0; }
+@media (max-width: 640px) { .prose-journal { font-size: 1.0625rem; line-height: 1.75; } .prose-journal figure, .prose-journal > img, .prose-journal p > img { margin: 2rem auto; } .prose-journal h2, .prose-journal h3 { font-size: 1.6rem; } }
+.prose-journal table { display: block; max-width: 100%; overflow-x: auto; }
 .prose-journal figcaption { font-size: .85rem; color: var(--muted-foreground); text-align: center; margin-top: .75rem; font-style: italic; }
 .prose-journal .wp-block-gallery, .prose-journal .tiled-gallery, .prose-journal .gallery {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; max-width: 72rem; margin: 3rem auto;
 }
 .prose-journal .wp-block-gallery figure, .prose-journal .gallery figure { margin: 0; }
-.prose-journal .wp-block-gallery img, .prose-journal .gallery img { aspect-ratio: 4/3; object-fit: cover; height: 100%; }
+.prose-journal .wp-block-gallery img, .prose-journal .gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; height: 100%; }
 @media (min-width: 768px) { .prose-journal .wp-block-gallery, .prose-journal .gallery { grid-template-columns: repeat(3, 1fr); } }
 .prose-journal iframe { max-width: 64rem; width: 100%; aspect-ratio: 16/9; margin: 3rem auto; display: block; }
+
+/* Logo legibility over photos without an opaque box (artwork unchanged). */
+.logo-on-photo { filter: drop-shadow(0 0 1px var(--on-photo)) drop-shadow(0 0 10px oklch(0.98 0.01 85 / 0.85)); }
+html, body { overflow-x: clip; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .photo-zoom:hover img { transform: none; }
+}
