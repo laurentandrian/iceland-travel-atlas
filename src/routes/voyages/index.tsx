@@ -58,7 +58,7 @@ function Voyages() {
   );
 }
 
-function TripTile({ t, big = false }: { t: { slug: string; name: string; year: number; cover: string | null; start: string | null; end: string | null }; big?: boolean }) {
+function TripTile({ t, big = false }: { t: { slug: string; name: string; year: number; cover: string | null; coverSrcset: string | null; start: string | null; end: string | null }; big?: boolean }) {
   return (
     <Link to="/voyages/$slug" params={{ slug: t.slug }} className="photo-zoom group relative block overflow-hidden">
       <Photo src={t.cover} srcSet={t.coverSrcset} sizes={big ? "(min-width: 768px) 60vw, 100vw" : "(min-width: 768px) 40vw, 100vw"} alt={`${t.name} ${t.year}`} className={`w-full ${big ? "aspect-[4/5] md:h-full md:aspect-auto" : "aspect-[16/9]"}`}
