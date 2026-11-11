@@ -33,6 +33,8 @@
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Jost", system-ui, sans-serif;
   --color-overlay: var(--overlay);
+  --color-sand: var(--sand);
+  --color-terracotta: var(--terracotta);
   --color-on-photo: var(--on-photo);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -78,8 +80,8 @@
 
 :root {
   --radius: 0.125rem;
-  --background: oklch(0.975 0.012 85);
-  --foreground: oklch(0.24 0.008 60);
+  --background: oklch(0.952 0.012 85);
+  --foreground: oklch(0.268 0.012 130);
   --card: oklch(0.955 0.016 82);
   --card-foreground: oklch(0.24 0.008 60);
   --popover: oklch(0.975 0.012 85);
@@ -90,13 +92,15 @@
   --secondary-foreground: oklch(0.24 0.008 60);
   --muted: oklch(0.93 0.018 80);
   --muted-foreground: oklch(0.48 0.015 60);
-  --accent: oklch(0.68 0.09 62);
-  --accent-foreground: oklch(0.2 0.01 60);
+  --accent: oklch(0.537 0.04 130);
+  --accent-foreground: oklch(0.952 0.012 85);
   --destructive: oklch(0.55 0.18 30);
   --destructive-foreground: oklch(0.975 0.012 85);
-  --border: oklch(0.86 0.02 75);
+  --border: oklch(0.82 0.03 80);
   --input: oklch(0.86 0.02 75);
-  --ring: oklch(0.68 0.09 62);
+  --ring: oklch(0.537 0.04 130);
+  --sand: oklch(0.72 0.04 80);
+  --terracotta: oklch(0.56 0.1 42);
   --overlay: oklch(0.18 0.01 60 / 0.55);
   --on-photo: oklch(0.98 0.01 85);
   --chart-1: oklch(0.68 0.09 62);
@@ -129,6 +133,19 @@
   body { font-family: var(--font-sans); font-weight: 350; -webkit-font-smoothing: antialiased; }
   h1, h2, h3 { font-family: var(--font-serif); font-weight: 500; letter-spacing: -0.01em; }
 }
+
+
+/* Atlas: subtle contour-line motif in sand, used behind map sections */
+.atlas-contours { position: relative; isolation: isolate; }
+.atlas-contours::before {
+  content: ""; position: absolute; inset: -2rem -1rem auto auto; width: min(560px, 90%); height: 320px; z-index: -1;
+  background-color: var(--sand); opacity: 0.35; pointer-events: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27520%27%20height%3D%27320%27%20viewBox%3D%270%200%20520%20320%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271%27%3E%3Cpath%20d%3D%27M-20%20250%20C80%20190%20150%20260%20250%20200%20S420%20120%20540%20170%27/%3E%3Cpath%20d%3D%27M-20%20220%20C90%20160%20160%20225%20255%20170%20S410%2095%20540%20140%27/%3E%3Cpath%20d%3D%27M-20%20190%20C100%20130%20170%20190%20260%20140%20S400%2070%20540%20110%27/%3E%3Cpath%20d%3D%27M-20%20160%20C110%20100%20180%20155%20265%20110%20S390%2045%20540%2080%27/%3E%3Cpath%20d%3D%27M60%20300%20C140%20270%20200%20300%20280%20270%20S430%20240%20540%20260%27/%3E%3Cpath%20d%3D%27M200%2060%20C240%2030%20300%2040%20320%2070%20S280%20120%20240%20105%20S170%2090%20200%2060Z%27/%3E%3Cpath%20d%3D%27M222%2068%20C248%2050%20290%2056%20300%2075%20S275%20100%20248%2093%20S205%2082%20222%2068Z%27/%3E%3C/svg%3E") no-repeat right top / contain;
+  mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27520%27%20height%3D%27320%27%20viewBox%3D%270%200%20520%20320%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271%27%3E%3Cpath%20d%3D%27M-20%20250%20C80%20190%20150%20260%20250%20200%20S420%20120%20540%20170%27/%3E%3Cpath%20d%3D%27M-20%20220%20C90%20160%20160%20225%20255%20170%20S410%2095%20540%20140%27/%3E%3Cpath%20d%3D%27M-20%20190%20C100%20130%20170%20190%20260%20140%20S400%2070%20540%20110%27/%3E%3Cpath%20d%3D%27M-20%20160%20C110%20100%20180%20155%20265%20110%20S390%2045%20540%2080%27/%3E%3Cpath%20d%3D%27M60%20300%20C140%20270%20200%20300%20280%20270%20S430%20240%20540%20260%27/%3E%3Cpath%20d%3D%27M200%2060%20C240%2030%20300%2040%20320%2070%20S280%20120%20240%20105%20S170%2090%20200%2060Z%27/%3E%3Cpath%20d%3D%27M222%2068%20C248%2050%20290%2056%20300%2075%20S275%20100%20248%2093%20S205%2082%20222%2068Z%27/%3E%3C/svg%3E") no-repeat right top / contain;
+}
+.atlas-frame { outline: 1px solid var(--sand); outline-offset: 6px; }
+.atlas-frame .leaflet-container { background: var(--secondary); }
+.atlas-frame .leaflet-tile-pane { filter: grayscale(0.55) sepia(0.18) contrast(0.95) brightness(1.03); }
 
 @utility eyebrow {
   font-family: var(--font-sans);

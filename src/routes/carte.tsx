@@ -26,8 +26,8 @@ function Carte() {
   return (
     <div>
       <Header />
-      <section className="mx-auto max-w-7xl px-6 pt-16 pb-10 md:px-10 md:pt-20">
-        <p className="eyebrow text-accent">Atlas</p>
+      <section className="atlas-contours mx-auto max-w-7xl px-6 pt-16 pb-10 md:px-10 md:pt-20">
+        <p className="eyebrow text-accent">Atlas · 7 destinations · 2012 — 2026</p>
         <h1 className="mt-3 text-5xl md:text-7xl">Nos voyages à travers le monde</h1>
         <p className="mt-6 max-w-2xl text-lg text-muted-foreground">Sept voyages depuis 2012. Choisissez une destination sur la carte ou dans la liste.</p>
       </section>

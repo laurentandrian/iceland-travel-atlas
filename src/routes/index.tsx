@@ -34,14 +34,13 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-overlay via-transparent to-transparent" />
         <div className="rise absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-6 pb-16 text-on-photo md:px-10 md:pb-24">
           <p className="eyebrow">Carnet de voyages</p>
-          <h1 className="mt-4 max-w-3xl text-[2.6rem] sm:text-5xl leading-[1.05] md:text-7xl lg:text-8xl">Partir, regarder, raconter.</h1>
+          <h1 className="mt-4 max-w-4xl text-[2.2rem] sm:text-5xl leading-[1.05] md:text-6xl lg:text-7xl">Bienvenue sur notre blog de voyages en famille.</h1>
         </div>
       </section>
 
       <section className="mx-auto max-w-3xl px-6 py-24 text-center md:py-32">
         <span className="rule-accent" />
-        <h2 className="mt-8 text-3xl leading-tight md:text-5xl">Bienvenue sur notre blog de voyages en famille.</h2>
-        <p className="mt-6 font-serif text-2xl leading-relaxed text-muted-foreground md:text-3xl">
+        <p className="mt-8 font-serif text-xl italic leading-relaxed text-muted-foreground md:text-2xl">
           Retrouvez le récit au jour le jour de nos voyages : anecdotes, paysages, rencontres et petites aventures.
         </p>
       </section>
@@ -79,9 +78,11 @@ function Home() {
       </section>
 
       <section className="mx-auto mt-32 max-w-7xl px-6 md:px-10" aria-labelledby="atlas-title">
-        <p className="eyebrow text-accent">Atlas</p>
+        <div className="atlas-contours">
+        <p className="eyebrow text-accent">Atlas · 7 destinations · 2012 — 2026</p>
         <h2 id="atlas-title" className="mt-3 text-4xl md:text-5xl">Nos voyages à travers le monde</h2>
         <p className="mt-4 mb-10 max-w-2xl text-muted-foreground">Depuis 2012, sept voyages en famille, de la Nouvelle-Zélande à l'Islande. Touchez un repère pour ouvrir le voyage.</p>
+        </div>
         <WorldAtlas trips={trips} />
       </section>
 
