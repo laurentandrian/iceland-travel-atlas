@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { tripsQuery } from "@/lib/queries";
+import { WorldAtlas } from "@/components/WorldAtlas";
 import { Header, Footer, Photo, fmtRange, PageError, PageNotFound } from "@/components/site";
 
 export const Route = createFileRoute("/")({
@@ -39,8 +40,9 @@ function Home() {
 
       <section className="mx-auto max-w-3xl px-6 py-24 text-center md:py-32">
         <span className="rule-accent" />
-        <p className="mt-8 font-serif text-2xl leading-relaxed md:text-3xl">
-          Depuis 2012, nous partons en famille et nous écrivons au jour le jour : les routes, les paysages, les rencontres et les petites aventures. Ce carnet en garde la trace.
+        <h2 className="mt-8 text-3xl leading-tight md:text-5xl">Bienvenue sur notre blog de voyages en famille.</h2>
+        <p className="mt-6 font-serif text-2xl leading-relaxed text-muted-foreground md:text-3xl">
+          Retrouvez le récit au jour le jour de nos voyages : anecdotes, paysages, rencontres et petites aventures.
         </p>
       </section>
 
@@ -74,6 +76,13 @@ function Home() {
             </Link>
           ))}
         </div>
+      </section>
+
+      <section className="mx-auto mt-32 max-w-7xl px-6 md:px-10" aria-labelledby="atlas-title">
+        <p className="eyebrow text-accent">Atlas</p>
+        <h2 id="atlas-title" className="mt-3 text-4xl md:text-5xl">Nos voyages à travers le monde</h2>
+        <p className="mt-4 mb-10 max-w-2xl text-muted-foreground">Depuis 2012, sept voyages en famille, de la Nouvelle-Zélande à l'Islande. Touchez un repère pour ouvrir le voyage.</p>
+        <WorldAtlas trips={trips} />
       </section>
 
       <section className="mt-32 bg-secondary py-24">

@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-ro
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { lazy, Suspense, useCallback } from "react";
 import { ClientOnly } from "@tanstack/react-router";
+import { InView } from "@/components/InView";
 import { tripQuery } from "@/lib/queries";
 import { Header, Footer, Photo, fmtRange, fmtDay, PageError, PageNotFound } from "@/components/site";
 
@@ -39,7 +40,8 @@ function Trip() {
   const open = useCallback((s: string) => navigate({ to: "/article/$slug", params: { slug: s } }), [navigate]);
   if (!data) return <PageNotFound />;
   const { trip, intro, itineraryImage, posts } = data;
-  const hasMap = posts.some((p) => p.coords);
+  const mapped = posts.filter((p) => p.coords).length;
+  const hasMap = mapped > 0;
   return (
     <div>
       <section className="relative h-[80vh] min-h-[480px] overflow-hidden">
@@ -64,11 +66,15 @@ function Trip() {
         {hasMap ? (
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="border border-border lg:col-span-8">
+              <InView placeholder={<div className="h-[420px] bg-secondary md:h-[560px]" />}>
               <ClientOnly fallback={<div className="h-[420px] bg-secondary md:h-[560px]" />}>
                 <Suspense fallback={<div className="h-[420px] bg-secondary md:h-[560px]" />}><TripMap stops={posts} onOpen={open} /></Suspense>
               </ClientOnly>
+              </InView>
             </div>
-            <ol className="space-y-3 lg:col-span-4">
+            <div className="lg:col-span-4">
+            {mapped < posts.length && <p className="eyebrow mb-5 text-muted-foreground">Itinéraire partiel : {mapped} étapes localisées sur {posts.length} récits</p>}
+            <ol className="space-y-3">
               {posts.filter((p) => p.coords).map((p, i) => (
                 <li key={p.slug}>
                   <Link to="/article/$slug" params={{ slug: p.slug }} className="group flex gap-4">
@@ -78,6 +84,7 @@ function Trip() {
                 </li>
               ))}
             </ol>
+            </div>
           </div>
         ) : itineraryImage ? (
           <img src={itineraryImage} alt={`Itinéraire ${trip.name}`} className="mx-auto w-full max-w-4xl" loading="lazy" />

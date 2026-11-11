@@ -16,6 +16,7 @@ export function Header({ overPhoto = false }: { overPhoto?: boolean }) {
       <Link to="/" activeOptions={{ exact: true }} className={cls} onClick={() => setOpen(false)}>Accueil</Link>
       <Link to="/voyages" activeOptions={{ exact: true }} className={cls} onClick={() => setOpen(false)}>Voyages</Link>
       <Link to="/voyages/$slug" params={{ slug: "islande-2026" }} className={cls} onClick={() => setOpen(false)}>Islande 2026</Link>
+      <Link to="/carte" className={cls} onClick={() => setOpen(false)}>Carte</Link>
     </>
   );
   return (
@@ -54,6 +55,7 @@ export function Footer() {
         <nav className="eyebrow flex gap-8 text-muted-foreground">
           <Link to="/" className="py-3 hover:text-foreground">Accueil</Link>
           <Link to="/voyages" className="py-3 hover:text-foreground">Voyages</Link>
+          <Link to="/carte" className="py-3 hover:text-foreground">Carte</Link>
         </nav>
       </div>
     </footer>

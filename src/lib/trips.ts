@@ -6,16 +6,18 @@ export type TripConfig = {
   name: string;
   year: number;
   featured: boolean;
+  // Destination marker on the world map: a well-known place of the trip (not a route).
+  place: { label: string; coords: [number, number] };
 };
 
 export const TRIPS: TripConfig[] = [
-  { slug: "islande-2026", pageSlug: "islande-2026-2", name: "Islande", year: 2026, featured: true },
-  { slug: "tanzanie-2018", pageSlug: "tanzanie-2018", name: "Tanzanie", year: 2018, featured: true },
-  { slug: "costarica-2016", pageSlug: "costa-rica-2016", name: "Costa Rica", year: 2016, featured: true },
-  { slug: "floride-2014", pageSlug: "floride-2014", name: "Floride", year: 2014, featured: false },
-  { slug: "mada-2013", pageSlug: "madagascar-2013", name: "Madagascar", year: 2013, featured: false },
-  { slug: "boston", pageSlug: "boston-2012", name: "Boston", year: 2012, featured: false },
-  { slug: "nz-2012", pageSlug: "nouvelle-zelande-2012", name: "Nouvelle-Zélande", year: 2012, featured: false },
+  { slug: "islande-2026", pageSlug: "islande-2026-2", name: "Islande", year: 2026, featured: true, place: { label: "Reykjavik, Islande", coords: [64.1466, -21.9426] } },
+  { slug: "tanzanie-2018", pageSlug: "tanzanie-2018", name: "Tanzanie", year: 2018, featured: true, place: { label: "Arusha, Tanzanie", coords: [-3.3869, 36.6830] } },
+  { slug: "costarica-2016", pageSlug: "costa-rica-2016", name: "Costa Rica", year: 2016, featured: true, place: { label: "San José, Costa Rica", coords: [9.9281, -84.0907] } },
+  { slug: "floride-2014", pageSlug: "floride-2014", name: "Floride", year: 2014, featured: false, place: { label: "Orlando, Floride", coords: [28.5383, -81.3792] } },
+  { slug: "mada-2013", pageSlug: "madagascar-2013", name: "Madagascar", year: 2013, featured: false, place: { label: "Antananarivo, Madagascar", coords: [-18.8792, 47.5079] } },
+  { slug: "boston", pageSlug: "boston-2012", name: "Boston", year: 2012, featured: false, place: { label: "Boston, États-Unis", coords: [42.3601, -71.0589] } },
+  { slug: "nz-2012", pageSlug: "nouvelle-zelande-2012", name: "Nouvelle-Zélande", year: 2012, featured: false, place: { label: "Auckland, Nouvelle-Zélande", coords: [-36.8485, 174.7633] } },
 ];
 
 export const findTrip = (slug: string) => TRIPS.find((t) => t.slug === slug);
