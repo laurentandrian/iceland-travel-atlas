@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- WordPress content is read only through server functions in src/lib/wp.functions.ts (GET via the connector gateway in wp.server.ts); never add write calls. Why: WordPress stays the single source of truth.
+- src/lib/trips.ts holds only the editorial selection (which categories are trips, featured vs archive) and map coordinates; all text and photos come from WordPress. Why: no duplicated content.
